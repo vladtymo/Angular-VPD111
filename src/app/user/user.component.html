@@ -1,6 +1,9 @@
+<!-- Pipes: uppercase lowercase date curency percent -->
+
 <div class="user-card">
     <h2>User Card</h2>
-    <p>Name: Vlad Tymo</p>
-    <p>Email: blabla@gmail.com</p>
-    <p>Status: Admin</p>
+    <p>Name: {{user.name | uppercase}}</p>
+    <p>Birthdate: {{user.birthdate | date:'longDate'}}</p>
+    <p>Email: {{user.email}}</p>
+    <p>Admin: {{user.isAdmin ? 'Yes' : 'No'}}</p>
 </div>
