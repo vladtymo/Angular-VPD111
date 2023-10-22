@@ -1,0 +1,17 @@
+<h2>User List</h2>
+
+<!-- Structural Directives: *ngIf *ngFor *ngSwitch -->
+
+<div *ngIf="!users || users.length == 0">
+    <h3>List is empty!</h3>
+    <img src="https://cdnl.iconscout.com/lottie/premium/thumb/empty-box-5708298-4748209.gif" alt="Empty image">
+</div>
+
+<!-- Event binding: (event)="code" -->
+
+<div>
+    <button (click)="clearList()">Clear All</button>
+</div>
+<div>
+    <app-user *ngFor="let i of users" [user]="i"></app-user>
+</div>
