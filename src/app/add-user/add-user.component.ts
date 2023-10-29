@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { IUser } from '../user/user';
 
 @Component({
@@ -10,8 +10,8 @@ import { IUser } from '../user/user';
 export class AddUserComponent {
 
 creationForm = this.fb.group({
-  name: [''],
-  email: [''],
+  name: ['', [Validators.required, Validators.minLength(3)]],
+  email: ['', Validators.email],
   birthdate: [new Date()],
   isAdmin: [false]
 });
@@ -22,6 +22,11 @@ createEvent = new EventEmitter<IUser>();
 constructor(private fb: FormBuilder) { }
 
   onSubmit(): void {
+
+    if (!this.creationForm.valid) {
+      alert("Invalid data!");
+      return;
+    }
 
     // get new user
     const user = this.creationForm.value as IUser;
